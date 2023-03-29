@@ -13,12 +13,20 @@ class ProductInventory(Base):
     inventory_level = Column(Float)
     last_updated = Column(DateTime, default=datetime.datetime.utcnow)
 
+class Order(Base):
+    __tablename__ = 'orders'
+    id = Column(Integer, primary_key=True)
+    order_id = Column(Integer)
+    customer_name = Column(String)
+    total = Column(Float)
+    date_created = Column(DateTime, default=datetime.datetime.utcnow)
+
 class Database:
     def __init__(self):
         self.engine = create_engine(Config.DATABASE_URI)
         self.Session = sessionmaker(bind=self.engine)
         Base.metadata.create_all(self.engine)
-    
+
     def add_product_inventory(self, product_id, inventory_level):
         session = self.Session()
         product_inventory = ProductInventory(
@@ -27,7 +35,7 @@ class Database:
         )
         session.add(product_inventory)
         session.commit()
-    
+
     def update_product_inventory(self, product_id, inventory_level):
         session = self.Session()
         product_inventory = session.query(ProductInventory).filter_by(product_id=product_id).first()
@@ -35,4 +43,14 @@ class Database:
             product_inventory.inventory_level = inventory_level
             product_inventory.last_updated = datetime.datetime.utcnow()
             session.commit()
+
+    def add_order(self, order_id, customer_name, total):
+        session = self.Session()
+        order = Order(
+            order_id=order_id,
+            customer_name=customer_name,
+            total=total
+        )
+        session.add(order)
+        session.commit()
 
