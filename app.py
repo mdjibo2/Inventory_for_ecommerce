@@ -2,12 +2,24 @@ from flask import Flask, request
 from dolibarr_api import DolibarrAPI
 from shopify_api import ShopifyAPI
 from database import Database
+import importlib.util
 
 app = Flask(__name__)
 
 dolibarr_api = DolibarrAPI()
 shopify_api = ShopifyAPI()
 db = Database()
+
+def load_config():
+    config = {}
+    try:
+        spec = importlib.util.spec_from_file_location("config", "./config.py")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        config.update(module.config)
+    except Exception as e:
+        print(f"Error loading config file: {str(e)}")
+    return config
 
 @app.route('/webhook/shopify/order_created', methods=['POST'])
 def shopify_order_created():
