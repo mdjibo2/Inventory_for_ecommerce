@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String, DateTime, Float
+from sqlalchemy import create_engine, Column, Integer, String, DateTime, Float, VARCHAR
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from config import Config
@@ -17,13 +17,13 @@ class Order(Base):
     __tablename__ = 'orders'
     id = Column(Integer, primary_key=True)
     order_id = Column(Integer)
-    customer_name = Column(String)
+    customer_name = Column(VARCHAR(255))
     total = Column(Float)
     date_created = Column(DateTime, default=datetime.datetime.utcnow)
 
 class Database:
     def __init__(self):
-        self.engine = create_engine(Config.DATABASE_URI)
+        self.engine = create_engine(Config.SQLALCHEMY_DATABASE_URI)
         self.Session = sessionmaker(bind=self.engine)
         Base.metadata.create_all(self.engine)
 

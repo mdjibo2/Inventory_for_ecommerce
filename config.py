@@ -1,9 +1,19 @@
+import os
 
-SHOPIFY_API_KEY = "J6qNKhU62K1Xvl8sQ9k2JUWw19Jmwoi5"
-SHOPIFY_PASSWORD = "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"
-SHOPIFY_SHARED_SECRET = "54f4728577b1b7a948b9dc04838af737"
-SHOPIFY_STORE_URL = "https://automateaccounting.myshopify.com/admin"
-DOLIBARR_API_KEY = "FkFs05V8BGxBP4Pj6Juzx5oA90bD3i5r"
-DOLIBARR_BASE_URL = "https://bosscompta.saas2.doliondemand.fr/api/admin/index.php"
-DOLIBARR_USERNAME = "admin"
-DOLIBARR_PASSWORD = "Hafiz2020$"
+class Config:
+    DOLIBARR_BASE_URL = "https://bosscompta.saas2.doliondemand.fr/api/index.php/"
+    DOLIBARR_API_KEY = "FkFs05V8BGxBP4Pj6Juzx5oA90bD3i5r"
+    DOLIBARR_API_SECRET = "Hafiz2020$"
+    DOLIBARR_ENTITY_ID = "1"
+    SHOPIFY_STORE_URL = "https://automateaccounting2.myshopify.com"
+    SHOPIFY_API_KEY = "134c93cffd48c4c134329c460d468fb2"
+    SHOPIFY_PASSWORD = "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"
+    SHOPIFY_SHARED_SECRET = "53ec2cf4aa9dc13836c51c9b5c0b26f8"
+    DATABASE_HOST = "localhost"
+    DATABASE_USER = "admin"
+    DATABASE_PASSWORD = "admin"
+    DATABASE_NAME = "dolitest"
+    DOLIBARR_API_URL = "https://bosscompta.saas2.doliondemand.fr/api/index.php/"
+    SHOPIFY_API_VERSION = "2021-10"
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://admin:admin@localhost/dolitest'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False

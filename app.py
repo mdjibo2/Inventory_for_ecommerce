@@ -2,6 +2,7 @@ from flask import Flask, request
 from dolibarr_api import DolibarrAPI
 from shopify_api import ShopifyAPI
 from database import Database
+from config import Config
 import importlib.util
 
 app = Flask(__name__)
@@ -55,5 +56,5 @@ def dolibarr_inventory_updated():
     return '', 200
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=8090)
 
