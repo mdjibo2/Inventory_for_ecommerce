@@ -3,6 +3,7 @@ import os
 class Config:
     DOLIBARR_BASE_URL = "https://bosscompta.saas2.doliondemand.fr/api/index.php/"
     DOLIBARR_API_KEY = "FkFs05V8BGxBP4Pj6Juzx5oA90bD3i5r"
+    DOLAPIKEY = "FkFs05V8BGxBP4Pj6Juzx5oA90bD3i5r"
     DOLIBARR_API_SECRET = "Hafiz2020$"
     DOLIBARR_ENTITY_ID = "1"
     SHOPIFY_STORE_URL = "https://automateaccounting2.myshopify.com"
